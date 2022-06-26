@@ -33,10 +33,6 @@ To properly run the scripts, it's needed to have an appropriate setup on AWS, co
 * Create a security group using the Default VPC (if there's no default, create one as taught [here](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-vpc)). In the Inbound Rules section, add a rule with the values used [here](https://video.udacity-data.com/topher/2021/March/605d5555_screenshot-2021-03-26-at-8.58.03-am/screenshot-2021-03-26-at-8.58.03-am.png). Similarly, add an Outbound Rule with the values used [here](https://video.udacity-data.com/topher/2021/March/605d559a_screenshot-2021-03-26-at-8.58.46-am/screenshot-2021-03-26-at-8.58.46-am.png);
 * Deploy a Redshift cluster using the security group created in the last step and associating to the cluster the IAM role created on the first step;
 
-
-### Config file
-In order to run these scripts, it's also necessary to edit the config file with the AWS credentials and cluster informations
-
 ### Steps
 In order to properly run the scripts, do as follows:
 
