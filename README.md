@@ -25,11 +25,21 @@ You need to have the library `psycopg2` installed at your environment in order t
 
 More info about this process can be found at the [psycopg2 documentation](https://www.psycopg.org/docs/install.html).
 
+### Environment Setup
+
+To properly run the scripts, it's needed to have an appropriate setup on AWS, composed by:
+
+* Create an Redshift IAM role having 'AmazonS3ReadOnlyAccess' role (docs [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html#roles-creatingrole-service-console));
+* Create a security group using the Default VPC (if there's no default, create one as taught [here](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-vpc)). In the Inbound Rules section, add a rule with the values used [here](https://video.udacity-data.com/topher/2021/March/605d5555_screenshot-2021-03-26-at-8.58.03-am/screenshot-2021-03-26-at-8.58.03-am.png). Similarly, add an Outbound Rule with the values used [here](https://video.udacity-data.com/topher/2021/March/605d559a_screenshot-2021-03-26-at-8.58.46-am/screenshot-2021-03-26-at-8.58.46-am.png);
+* Deploy a Redshift cluster using the security group created in the last step and associating to the cluster the IAM role created on the first step;
+
+
 ### Config file
 In order to run these scripts, it's also necessary to edit the config file with the AWS credentials and cluster informations
 
 ### Steps
 In order to properly run the scripts, do as follows:
 
-* First, run `create_tables.py` in order to create the database and the tables that are necessary for the ETL processes;
+* First, fill the blank spaces on `dwh.cfg` with your AWS credentials, the Redshift cluster informations and the ARN associated with the created IAM Role;
+* Then, run `create_tables.py` in order to create the database and the tables that are necessary for the ETL processes;
 * Second, run `etl.py` to read and process the data from the S3 bucket files. Make sure to have `sql_queries.py` at the same directory as `etl.py` and also to add the necessary info to `dwh.cfg` file.
